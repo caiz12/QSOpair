@@ -34,7 +34,7 @@ def median_ss(sky_file, img_file, mask_limit, mask_file, ss_out_file, sky_out_fi
 
     ## looping over the layers
     for j in np.arange(0, len(sky[:,1,1]), 1):
-        # iterated 10 times, rejecting points by > 3 sigma
+        # iterated 5 times, rejecting points by > 3 sigma
         filtered_data = sigma_clip(sky[j,:,:], sigma=3, iters=5)
         sky_value = np.median(filtered_data.data[~filtered_data.mask])
         # subtract the sky median value
